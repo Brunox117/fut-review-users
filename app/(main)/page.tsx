@@ -1,6 +1,6 @@
-import MainMatch from "./components/matches/MainMatch";
-import SideMatches from "./components/matches/FeaturedMatches";
-import FeaturedComments from "./components/comments/FeaturedComments";
+import FeaturedComments from "../components/comments/FeaturedComments";
+import SideMatches from "../components/matches/FeaturedMatches";
+import MainMatch from "../components/matches/MainMatch";
 
 export default function Home() {
   return (
