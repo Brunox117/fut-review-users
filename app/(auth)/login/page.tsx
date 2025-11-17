@@ -29,7 +29,7 @@ export default function Login() {
             <h1 className="font-mestizo text-xl font-bold">MATCHDAY REVIEW</h1>
             <FieldDescription>
               No tienes una cuenta?{" "}
-              <Link href="/auth/register">Registrate aquí</Link>
+              <Link href="/register">Registrate aquí</Link>
             </FieldDescription>
           </div>
           <Field>

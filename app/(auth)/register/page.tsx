@@ -18,7 +18,7 @@ export default function Register() {
             <h1 className="font-mestizo text-xl font-bold">Go Derby</h1>
             <FieldDescription>
               Ya tienes una cuenta?{" "}
-              <Link href="/auth/login">Inicia sesión aquí</Link>
+              <Link href="/login">Inicia sesión aquí</Link>
             </FieldDescription>
           </div>
           <Field>

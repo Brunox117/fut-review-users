@@ -1,9 +1,25 @@
+import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 export default function Navbar() {
+  const navigationItems = [
+    { label: "Inicio", href: "/" },
+    { label: "Ligas", href: "/leagues" },
+    { label: "Jugadores", href: "/players" },
+    { label: "Mi Perfil", href: "/my-profile" },
+    { label: "Cerrar sesión", href: "/login" },
+  ];
+
   return (
     <>
-      <div className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#333333]/30 px-4 py-2 mb-6">
-        <div className="flex items-center gap-8">
-          <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#333333]/30 px-3 py-2 mb-6">
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
             <div className="size-6">
               <svg
                 fill="none"
@@ -24,46 +40,58 @@ export default function Navbar() {
                 ></path>
               </svg>
             </div>
-            <h2 className="text-[#1A1A1A] text-xl font-bold tracking-[-0.015em] font-display">
+            <h2 className="text-[#1A1A1A] text-lg md:text-xl font-bold tracking-[-0.015em] font-display">
               MATCHDAY REVIEW
             </h2>
           </div>
-          <div className="hidden md:flex items-center gap-9">
-            <a
-              className="text-[#1A1A1A] text-sm font-medium leading-normal underline-offset-4 hover:underline"
-              href="#"
-            >
-              Home
-            </a>
-            <a
-              className="text-[#333333] text-sm font-medium leading-normal underline-offset-4 hover:underline"
-              href="#"
-            >
-              Leagues
-            </a>
-            <a
-              className="text-[#333333] text-sm font-medium leading-normal underline-offset-4 hover:underline"
-              href="#"
-            >
-              Players
-            </a>
-            <a
-              className="text-[#333333] text-sm font-medium leading-normal underline-offset-4 hover:underline"
-              href="#"
-            >
-              My Profile
-            </a>
+
+          <div className="hidden md:flex items-center gap-6">
+            {navigationItems.map((item) => (
+              <Link
+                key={item.label}
+                className="text-[#333333] text-sm font-medium leading-normal underline-offset-4 hover:underline"
+                href={item.href}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
-        <div className="flex flex-1 justify-end items-center gap-4">
-          <div
-            className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-[#333333]/30"
-            data-alt="User profile picture"
-            style={{
-              backgroundImage:
-                'url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_OQFudjCCvlT1BqwNRVmCRtac1vyvk2US2fhdZngTHor-ej8K9GjPDPR_LUDsMkAMvfdIH-h_iG6ZZTLFp9L5z6PxMZ2LF0kpH_NpG6ASj6UGpySs1gjCU5TYLGkYvdTQ0I0_5hCLvTamMcyXAhQcV9sLlphtLE4UXfQ-vGjGRerOxtd9R5om3i-aWQ9TwMDA5jQ8CtLmgBsJSkoc3sTgUS3QieU-i5mwAfQn0zcNxsTurW8GThBzw5dT4KD8pyiY4sYEbvrm1w")',
-            }}
-          ></div>
+
+        {/* Dropdown menu - visible solo en móviles */}
+        <div className="md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className="p-2 rounded-md hover:bg-gray-100 transition-colors"
+                aria-label="Toggle menu"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              {navigationItems.map((item) => (
+                <DropdownMenuItem key={item.label} asChild>
+                  <Link href={item.href} className="w-full">
+                    {item.label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </>
