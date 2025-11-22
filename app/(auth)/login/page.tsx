@@ -25,8 +25,7 @@ export default function Login() {
       <form className="mb-6" onSubmit={handleSubmit}>
         <FieldGroup>
           <div className="flex flex-col items-center gap-2 text-center">
-            <h1 className="text-xl font-bold">Bienvenido a</h1>
-            <h1 className="font-mestizo text-xl font-bold">MATCHDAY REVIEW</h1>
+            <h1 className="text-xl font-bold">Inicia sesión</h1>
             <FieldDescription>
               No tienes una cuenta?{" "}
               <Link href="/register">Registrate aquí</Link>
